@@ -1,15 +1,12 @@
-import React, {useState} from 'react';
-import {Input} from "./Input";
+import React from 'react'
+import {StateApp} from "./StateApp";
+import {ReduxApp} from "./ReduxApp";
 
-const nums = [0, 1];
+const redux = false
 
-
-function App() {
-  const [val1, setVal1] = useState({ value: '' })
-
-  return <>
-    <Input value={val1} setValue={setVal1}/>
-  </>;
+export default function () {
+    if (redux) {
+        return <ReduxApp />
+    }
+    return <StateApp/>
 }
-
-export default App;
