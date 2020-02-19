@@ -1,12 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {StateApp} from "./StateApp";
 import {ReduxApp} from "./ReduxApp";
 
-const redux = false
-
 export default function () {
-    if (redux) {
-        return <ReduxApp />
-    }
-    return <StateApp/>
+    const [reduxApp, setReduxApp] = useState(false)
+
+    return <>
+        Redux App ({String(reduxApp)}): <input
+            type="checkbox"
+            name="check"
+            checked={reduxApp}
+            onChange={(e) => {
+                setReduxApp(e.target.checked)
+            }}
+        />
+        <br />
+
+        {!reduxApp && <StateApp/>}
+        {reduxApp && <ReduxApp/>}
+    </>
 }
